@@ -2150,42 +2150,29 @@ async function loadMemberReviewers() {
 
   if (!container) return;
 
-
   if (!isMemberLoggedIn()) {
 
     container.innerHTML = `
       <article>
-
-        <strong>
-          🔒 Member access required
-        </strong>
-
+        <strong>🔒 Member access required</strong>
         <span>
           Please log in as an SME member to view
           member reviewers.
         </span>
-
       </article>
     `;
 
     return;
   }
 
-
   container.innerHTML = `
     <article>
-
-      <strong>
-        Loading member reviewers...
-      </strong>
-
+      <strong>Loading member reviewers...</strong>
       <span>
         Please wait while the reviewer repository loads.
       </span>
-
     </article>
   `;
-
 
   try {
 
@@ -2210,7 +2197,6 @@ async function loadMemberReviewers() {
           ascending: false
         });
 
-
     if (error) {
 
       console.error(
@@ -2219,36 +2205,26 @@ async function loadMemberReviewers() {
       );
 
       throw error;
-
     }
-
 
     const reviewers =
       Array.isArray(data)
         ? data
         : [];
 
-
     if (reviewers.length === 0) {
 
       container.innerHTML = `
         <article>
-
-          <strong>
-            No approved reviewers yet
-          </strong>
-
+          <strong>No approved reviewers yet</strong>
           <span>
             Approved SME member reviewers will appear here.
           </span>
-
         </article>
       `;
 
       return;
-
     }
-
 
     container.innerHTML =
       reviewers.map(reviewer => {
@@ -2264,9 +2240,7 @@ async function loadMemberReviewers() {
             `
             : "";
 
-
         return `
-
           <article>
 
             <strong>
@@ -2275,62 +2249,28 @@ async function loadMemberReviewers() {
               )}
             </strong>
 
-
             <span>
-
               ${escapeHTML(
                 reviewer.subject
               )}
-
               •
-
               ${escapeHTML(
                 reviewer.year_level
               )}
-
             </span>
-
 
             ${description}
 
-
-            <div
-  style="
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    flex-wrap:wrap;
-  "
->
-
-  <span>
-    File:
-    ${escapeHTML(
-      submission.file_name
-    )}
-  </span>
-
-
-  <button
-    type="button"
-    class="secondary-button"
-    data-verification-file="${escapeHTML(
-      submission.id
-    )}"
-  >
-    📄 Open File
-  </button>
-
-</div>
-
+            <span>
+              File:
+              ${escapeHTML(
+                reviewer.file_name
+              )}
+            </span>
 
             <small>
-
               Approved reviewer
-
             </small>
-
 
             <button
               type="button"
@@ -2341,17 +2281,13 @@ async function loadMemberReviewers() {
               )}"
               style="margin-top:10px;"
             >
-
               📖 Open Reviewer
-
             </button>
 
           </article>
-
         `;
 
       }).join("");
-
 
   } catch (error) {
 
@@ -2360,31 +2296,21 @@ async function loadMemberReviewers() {
       error
     );
 
-
     container.innerHTML = `
       <article>
-
-        <strong>
-          ⚠️ Unable to load reviewers
-        </strong>
-
+        <strong>⚠️ Unable to load reviewers</strong>
         <span>
           Please try again later.
         </span>
-
       </article>
     `;
-
 
     showToast(
       "⚠️ Unable to load member reviewers."
     );
-
   }
 
-}
-
-/* =========================================================
+}/* =========================================================
    OPEN APPROVED MEMBER REVIEWER
 ========================================================= */
 
