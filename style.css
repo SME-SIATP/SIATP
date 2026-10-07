@@ -1,7 +1,7 @@
 /* =========================================================
    SME INTEGRATED ACADEMIC & TRANSPARENCY PLATFORM
    MAIN STYLESHEET
-   BURGUNDY / BURNT ORANGE PALETTE
+   RESPONSIVE / BURGUNDY / BURNT ORANGE PALETTE
    ========================================================= */
 
 
@@ -11,7 +11,6 @@
 
 :root {
 
-  /* Main Brand Palette */
   --primary: #741b17;
   --primary-dark: #4a161a;
   --primary-light: #f8ebe9;
@@ -19,21 +18,17 @@
   --accent: #8b3715;
   --accent-light: #f8eee8;
 
-  /* Semantic Colors */
   --red: #741b17;
   --green: #16803c;
 
-  /* Text */
   --dark: #4a161a;
   --text: #3f3030;
   --muted: #756666;
 
-  /* Surfaces */
   --white: #ffffff;
   --light: #fcf8f7;
   --border: #eadbd7;
 
-  /* Gradients */
   --brand-gradient:
     linear-gradient(
       135deg,
@@ -45,7 +40,7 @@
   --soft-gradient:
     linear-gradient(
       135deg,
-      #fff 0%,
+      #ffffff 0%,
       #fcf4f1 100%
     );
 
@@ -56,7 +51,6 @@
       #8b3715 100%
     );
 
-  /* Shadows */
   --shadow:
     0 20px 50px rgba(74, 22, 26, 0.12);
 
@@ -85,10 +79,14 @@ html {
 
   scroll-behavior: smooth;
 
+  -webkit-text-size-adjust: 100%;
+
 }
 
 
 body {
+
+  min-width: 320px;
 
   font-family:
     "DM Sans",
@@ -107,6 +105,9 @@ body {
   line-height:
     1.6;
 
+  overflow-x:
+    hidden;
+
 }
 
 
@@ -118,9 +119,21 @@ body.no-scroll {
 }
 
 
+img {
+
+  max-width:
+    100%;
+
+  height:
+    auto;
+
+}
+
+
 button,
 input,
-select {
+select,
+textarea {
 
   font-family:
     inherit;
@@ -180,10 +193,16 @@ a {
   z-index:
     100;
 
+  width:
+    100%;
+
   background:
     rgba(255, 255, 255, 0.94);
 
   backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
     blur(16px);
 
   border-bottom:
@@ -207,12 +226,15 @@ a {
     space-between;
 
   gap:
-    30px;
+    20px;
 
 }
 
 
 .brand {
+
+  min-width:
+    0;
 
   display:
     flex;
@@ -238,6 +260,9 @@ a {
 
 .brand-logo {
 
+  flex:
+    0 0 auto;
+
   width:
     42px;
 
@@ -245,9 +270,12 @@ a {
     42px;
 
   display:
-    grid;
+    flex;
 
-  place-items:
+  align-items:
+    center;
+
+  justify-content:
     center;
 
   border-radius:
@@ -265,6 +293,26 @@ a {
   box-shadow:
     0 7px 18px rgba(116, 27, 23, 0.20);
 
+  overflow:
+    hidden;
+
+}
+
+
+.brand-logo img {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    contain;
+
+  display:
+    block;
+
 }
 
 
@@ -281,8 +329,14 @@ a {
   display:
     flex;
 
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
   gap:
-    28px;
+    clamp(16px, 2.5vw, 28px);
 
 }
 
@@ -298,6 +352,9 @@ a {
   font-weight:
     600;
 
+  white-space:
+    nowrap;
+
   transition:
     0.2s ease;
 
@@ -308,6 +365,14 @@ a {
 
   color:
     var(--primary);
+
+}
+
+
+#navAuthArea {
+
+  flex:
+    0 0 auto;
 
 }
 
@@ -331,6 +396,9 @@ a {
 
   font-weight:
     700;
+
+  white-space:
+    nowrap;
 
   transition:
     0.2s ease;
@@ -362,7 +430,8 @@ a {
 .hero {
 
   padding:
-    100px 0 90px;
+    clamp(70px, 9vw, 100px) 0
+    clamp(65px, 8vw, 90px);
 
   overflow:
     hidden;
@@ -376,13 +445,14 @@ a {
     grid;
 
   grid-template-columns:
-    1.05fr 0.95fr;
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
 
   align-items:
     center;
 
   gap:
-    70px;
+    clamp(35px, 6vw, 70px);
 
 }
 
@@ -433,6 +503,9 @@ a {
   height:
     8px;
 
+  flex:
+    0 0 auto;
+
   border-radius:
     50%;
 
@@ -453,7 +526,7 @@ a {
     sans-serif;
 
   font-size:
-    clamp(48px, 7vw, 78px);
+    clamp(44px, 6vw, 78px);
 
   line-height:
     0.98;
@@ -463,6 +536,9 @@ a {
 
   margin-bottom:
     26px;
+
+  overflow-wrap:
+    break-word;
 
 }
 
@@ -481,7 +557,7 @@ a {
     650px;
 
   font-size:
-    18px;
+    clamp(16px, 2vw, 18px);
 
   color:
     var(--muted);
@@ -524,6 +600,9 @@ a {
 
   font-weight:
     700;
+
+  min-height:
+    44px;
 
   transition:
     0.2s ease;
@@ -611,10 +690,10 @@ a {
     absolute;
 
   width:
-    350px;
+    min(350px, 80vw);
 
   height:
-    350px;
+    min(350px, 80vw);
 
   border:
     1px solid #ead0cb;
@@ -704,7 +783,7 @@ a {
     );
 
   padding:
-    28px;
+    clamp(20px, 3vw, 28px);
 
   background:
     rgba(255,255,255,0.97);
@@ -781,6 +860,9 @@ a {
   font-weight:
     800;
 
+  white-space:
+    nowrap;
+
 }
 
 
@@ -821,6 +903,9 @@ a {
 
   flex:
     1;
+
+  min-width:
+    4px;
 
   border-radius:
     7px 7px 2px 2px;
@@ -869,7 +954,7 @@ a {
     grid;
 
   grid-template-columns:
-    1fr 1fr;
+    repeat(2, minmax(0, 1fr));
 
   gap:
     12px;
@@ -878,6 +963,9 @@ a {
 
 
 .mini-stat {
+
+  min-width:
+    0;
 
   padding:
     15px;
@@ -913,6 +1001,9 @@ a {
   color:
     var(--dark);
 
+  overflow-wrap:
+    anywhere;
+
 }
 
 
@@ -923,7 +1014,7 @@ a {
 section {
 
   padding:
-    95px 0;
+    clamp(65px, 8vw, 95px) 0;
 
 }
 
@@ -974,7 +1065,7 @@ section:nth-of-type(even) {
     var(--dark);
 
   font-size:
-    clamp(34px, 5vw, 52px);
+    clamp(32px, 5vw, 52px);
 
   line-height:
     1.05;
@@ -1003,7 +1094,7 @@ section:nth-of-type(even) {
     grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4, minmax(0, 1fr));
 
   gap:
     18px;
@@ -1012,6 +1103,9 @@ section:nth-of-type(even) {
 
 
 .access-card {
+
+  min-width:
+    0;
 
   padding:
     25px;
@@ -1064,6 +1158,9 @@ section:nth-of-type(even) {
 
   height:
     48px;
+
+  flex:
+    0 0 auto;
 
   display:
     grid;
@@ -1156,7 +1253,7 @@ section:nth-of-type(even) {
     grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4, minmax(0, 1fr));
 
   gap:
     18px;
@@ -1165,6 +1262,9 @@ section:nth-of-type(even) {
 
 
 .feature-card {
+
+  min-width:
+    0;
 
   background:
     white;
@@ -1251,7 +1351,8 @@ section:nth-of-type(even) {
     center;
 
   padding:
-    70px 40px;
+    clamp(45px, 7vw, 70px)
+    clamp(20px, 5vw, 40px);
 
   border-radius:
     30px;
@@ -1463,12 +1564,15 @@ footer {
     center;
 
   padding:
-    20px;
+    clamp(10px, 3vw, 20px);
 
   background:
     rgba(74, 22, 26, 0.68);
 
   backdrop-filter:
+    blur(7px);
+
+  -webkit-backdrop-filter:
     blur(7px);
 
   opacity:
@@ -1509,6 +1613,9 @@ footer {
       100%
     );
 
+  max-width:
+    100%;
+
   max-height:
     90vh;
 
@@ -1524,6 +1631,9 @@ footer {
   box-shadow:
     0 30px 90px
     rgba(74, 22, 26, 0.28);
+
+  overscroll-behavior:
+    contain;
 
 }
 
@@ -1560,7 +1670,7 @@ footer {
     center;
 
   gap:
-    20px;
+    15px;
 
   padding:
     20px 24px;
@@ -1575,6 +1685,9 @@ footer {
 
 
 .window-title {
+
+  min-width:
+    0;
 
   display:
     flex;
@@ -1597,6 +1710,9 @@ footer {
   color:
     var(--dark);
 
+  overflow-wrap:
+    anywhere;
+
 }
 
 
@@ -1618,6 +1734,9 @@ footer {
 
   height:
     44px;
+
+  flex:
+    0 0 auto;
 
   display:
     grid;
@@ -1644,6 +1763,9 @@ footer {
 
   height:
     38px;
+
+  flex:
+    0 0 auto;
 
   border:
     none;
@@ -1682,6 +1804,9 @@ footer {
   gap:
     8px;
 
+  flex-wrap:
+    wrap;
+
 }
 
 
@@ -1711,18 +1836,7 @@ footer {
 .window-body {
 
   padding:
-    25px;
-
-}
-
-
-.window-intro {
-
-  color:
-    var(--muted);
-
-  margin-bottom:
-    22px;
+    clamp(18px, 4vw, 25px);
 
 }
 
@@ -1759,9 +1873,14 @@ footer {
 }
 
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
 
   width:
+    100%;
+
+  max-width:
     100%;
 
   padding:
@@ -1785,7 +1904,20 @@ footer {
 }
 
 
-.form-group input:focus {
+.form-group textarea {
+
+  min-height:
+    110px;
+
+  resize:
+    vertical;
+
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
 
   border-color:
     var(--primary);
@@ -1870,7 +2002,7 @@ footer {
     grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2, minmax(0, 1fr));
 
   gap:
     15px;
@@ -1879,6 +2011,9 @@ footer {
 
 
 .window-option {
+
+  min-width:
+    0;
 
   text-align:
     left;
@@ -1962,7 +2097,7 @@ footer {
     grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2, minmax(0, 1fr));
 
   gap:
     14px;
@@ -1971,6 +2106,9 @@ footer {
 
 
 .folder-card {
+
+  min-width:
+    0;
 
   border:
     1px solid var(--border);
@@ -2047,6 +2185,9 @@ footer {
 
 .detail-list article {
 
+  min-width:
+    0;
+
   padding:
     16px;
 
@@ -2070,6 +2211,9 @@ footer {
   color:
     var(--dark);
 
+  overflow-wrap:
+    anywhere;
+
 }
 
 
@@ -2086,6 +2230,9 @@ footer {
 
   margin-top:
     4px;
+
+  overflow-wrap:
+    anywhere;
 
 }
 
@@ -2158,6 +2305,9 @@ footer {
   color:
     var(--dark);
 
+  overflow-wrap:
+    anywhere;
+
 }
 
 
@@ -2179,6 +2329,9 @@ footer {
 
   align-items:
     center;
+
+  gap:
+    12px;
 
   margin-bottom:
     12px;
@@ -2248,6 +2401,12 @@ footer {
 
 .year-switcher select {
 
+  width:
+    100%;
+
+  max-width:
+    320px;
+
   padding:
     10px 12px;
 
@@ -2268,8 +2427,14 @@ footer {
 
 .red-card-table-wrap {
 
+  width:
+    100%;
+
   overflow-x:
     auto;
+
+  -webkit-overflow-scrolling:
+    touch;
 
 }
 
@@ -2278,6 +2443,9 @@ table {
 
   width:
     100%;
+
+  min-width:
+    650px;
 
   border-collapse:
     collapse;
@@ -2299,6 +2467,9 @@ td {
 
   font-size:
     13px;
+
+  white-space:
+    nowrap;
 
 }
 
@@ -2375,7 +2546,7 @@ td {
     50%;
 
   bottom:
-    25px;
+    max(20px, env(safe-area-inset-bottom));
 
   transform:
     translate(-50%, 30px);
@@ -2385,6 +2556,9 @@ td {
 
   visibility:
     hidden;
+
+  width:
+    max-content;
 
   max-width:
     calc(100% - 30px);
@@ -2406,6 +2580,9 @@ td {
 
   font-weight:
     700;
+
+  text-align:
+    center;
 
   box-shadow:
     var(--shadow);
@@ -2570,17 +2747,48 @@ td {
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
    ========================================================= */
 
-@media (
-  max-width: 1000px
-) {
+@media (max-width: 1000px) {
 
   .hero-grid {
 
     grid-template-columns:
       1fr;
+
+  }
+
+
+  .hero-content {
+
+    max-width:
+      800px;
+
+    margin:
+      0 auto;
+
+    text-align:
+      center;
+
+  }
+
+
+  .hero-content > p {
+
+    margin-left:
+      auto;
+
+    margin-right:
+      auto;
+
+  }
+
+
+  .hero-buttons {
+
+    justify-content:
+      center;
 
   }
 
@@ -2597,24 +2805,31 @@ td {
   .features-grid {
 
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2, minmax(0, 1fr));
+
+  }
+
+
+  .nav-links {
+
+    gap:
+      18px;
 
   }
 
 }
 
 
-@media (
-  max-width: 700px
-) {
+/* =========================================================
+   SMALL TABLET / LARGE PHONE
+   ========================================================= */
+
+@media (max-width: 760px) {
 
   .container {
 
     width:
-      min(
-        100% - 28px,
-        1160px
-      );
+      calc(100% - 28px);
 
   }
 
@@ -2623,6 +2838,9 @@ td {
 
     min-height:
       68px;
+
+    gap:
+      12px;
 
   }
 
@@ -2635,10 +2853,26 @@ td {
   }
 
 
+  .brand {
+
+    flex:
+      1 1 auto;
+
+  }
+
+
+  .brand > span:last-child {
+
+    line-height:
+      1.15;
+
+  }
+
+
   .hero {
 
     padding:
-      70px 0;
+      65px 0;
 
   }
 
@@ -2646,7 +2880,7 @@ td {
   section {
 
     padding:
-      70px 0;
+      65px 0;
 
   }
 
@@ -2654,21 +2888,33 @@ td {
   .hero h1 {
 
     font-size:
-      52px;
+      clamp(42px, 12vw, 58px);
+
+  }
+
+
+  .hero-visual {
+
+    min-height:
+      330px;
+
+  }
+
+
+  .dashboard-card {
+
+    width:
+      min(
+        100%,
+        430px
+      );
 
   }
 
 
   .access-grid,
   .features-grid,
-  .reviewer-folders {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
+  .reviewer-folders,
   .window-grid {
 
     grid-template-columns:
@@ -2677,21 +2923,84 @@ td {
   }
 
 
-  .dashboard-card {
+  .window-overlay {
+
+    align-items:
+      flex-start;
 
     padding:
-      20px;
+      10px;
 
   }
 
 
-  .orbit {
+  .site-window {
 
     width:
-      290px;
+      100%;
+
+    max-height:
+      calc(100vh - 20px);
+
+    max-height:
+      calc(100dvh - 20px);
+
+    border-radius:
+      18px;
+
+  }
+
+
+  .window-header {
+
+    padding:
+      15px 16px;
+
+  }
+
+
+  .window-body {
+
+    padding:
+      18px 16px;
+
+  }
+
+
+  .window-title {
+
+    gap:
+      9px;
+
+  }
+
+
+  .mini-icon {
+
+    width:
+      38px;
 
     height:
-      290px;
+      38px;
+
+    border-radius:
+      10px;
+
+  }
+
+
+  .window-title h3 {
+
+    font-size:
+      18px;
+
+  }
+
+
+  .window-title p {
+
+    font-size:
+      11px;
 
   }
 
@@ -2707,32 +3016,64 @@ td {
   }
 
 
-  .window-header {
+  .objective-box {
 
-    padding:
-      16px;
+    border-radius:
+      22px;
 
   }
 
 
-  .window-body {
+  .record-line {
 
-    padding:
-      18px;
+    flex-direction:
+      column;
+
+    gap:
+      5px;
+
+  }
+
+
+  .panel-heading {
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
 
   }
 
 }
 
 
-@media (
-  max-width: 450px
-) {
+/* =========================================================
+   PHONE
+   ========================================================= */
 
-  .brand > span:last-child {
+@media (max-width: 520px) {
 
-    font-size:
-      13px;
+  .container {
+
+    width:
+      calc(100% - 24px);
+
+  }
+
+
+  .navbar {
+
+    position:
+      sticky;
+
+  }
+
+
+  .brand {
+
+    gap:
+      8px;
 
   }
 
@@ -2740,10 +3081,21 @@ td {
   .brand-logo {
 
     width:
-      37px;
+      38px;
 
     height:
-      37px;
+      38px;
+
+    border-radius:
+      10px;
+
+  }
+
+
+  .brand > span:last-child {
+
+    font-size:
+      13px;
 
   }
 
@@ -2756,13 +3108,24 @@ td {
     font-size:
       12px;
 
+    border-radius:
+      9px;
+
+  }
+
+
+  .hero {
+
+    padding:
+      55px 0;
+
   }
 
 
   .hero h1 {
 
     font-size:
-      45px;
+      clamp(38px, 13vw, 50px);
 
   }
 
@@ -2770,7 +3133,7 @@ td {
   .hero-content > p {
 
     font-size:
-      16px;
+      15px;
 
   }
 
@@ -2779,6 +3142,9 @@ td {
 
     flex-direction:
       column;
+
+    width:
+      100%;
 
   }
 
@@ -2790,17 +3156,872 @@ td {
 
   }
 
-}
-.brand-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+
+  .hero-visual {
+
+    min-height:
+      300px;
+
+  }
+
+
+  .orbit {
+
+    width:
+      260px;
+
+    height:
+      260px;
+
+  }
+
+
+  .dashboard-card {
+
+    padding:
+      17px;
+
+    border-radius:
+      18px;
+
+  }
+
+
+  .dashboard-top {
+
+    gap:
+      10px;
+
+  }
+
+
+  .dashboard-top h3 {
+
+    font-size:
+      17px;
+
+  }
+
+
+  .status {
+
+    font-size:
+      10px;
+
+  }
+
+
+  .chart {
+
+    height:
+      145px;
+
+    gap:
+      7px;
+
+    padding:
+      14px;
+
+    margin:
+      25px 0;
+
+  }
+
+
+  .dashboard-info {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .access-card,
+  .feature-card {
+
+    padding:
+      21px;
+
+  }
+
+
+  .section-heading {
+
+    margin-bottom:
+      30px;
+
+  }
+
+
+  .section-heading h2 {
+
+    font-size:
+      clamp(30px, 10vw, 40px);
+
+  }
+
+
+  .objective-box {
+
+    padding:
+      42px 20px;
+
+  }
+
+
+  .math-symbol {
+
+    width:
+      60px;
+
+    height:
+      60px;
+
+    font-size:
+      30px;
+
+  }
+
+
+  .window-overlay {
+
+    padding:
+      7px;
+
+  }
+
+
+  .site-window {
+
+    max-height:
+      calc(100vh - 14px);
+
+    max-height:
+      calc(100dvh - 14px);
+
+    border-radius:
+      16px;
+
+  }
+
+
+  .window-header {
+
+    padding:
+      13px;
+
+  }
+
+
+  .window-body {
+
+    padding:
+      15px 13px;
+
+  }
+
+
+  .window-title h3 {
+
+    font-size:
+      16px;
+
+  }
+
+
+  .window-title p {
+
+    font-size:
+      10px;
+
+  }
+
+
+  .close-button {
+
+    width:
+      34px;
+
+    height:
+      34px;
+
+    font-size:
+      22px;
+
+  }
+
+
+  .primary-button,
+  .secondary-button {
+
+    width:
+      100%;
+
+  }
+
+
+  .header-actions {
+
+    width:
+      100%;
+
+  }
+
+
+  .header-actions button {
+
+    flex:
+      1;
+
+  }
+
+
+  .detail-list article {
+
+    padding:
+      14px;
+
+  }
+
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+
+    font-size:
+      16px;
+
+  }
+
+
+  footer {
+
+    padding:
+      25px 12px;
+
+    font-size:
+      12px;
+
+  }
+
 }
 
-.brand-logo img {
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .container {
+
+    width:
+      calc(100% - 18px);
+
+  }
+
+
+  .brand > span:last-child {
+
+    font-size:
+      12px;
+
+  }
+
+
+  .brand-logo {
+
+    width:
+      34px;
+
+    height:
+      34px;
+
+  }
+
+
+  .nav-button {
+
+    padding:
+      8px 9px;
+
+    font-size:
+      11px;
+
+  }
+
+
+  .hero h1 {
+
+    font-size:
+      36px;
+
+  }
+
+
+  .hero-content > p {
+
+    font-size:
+      14px;
+
+  }
+
+
+  .dashboard-card {
+
+    padding:
+      14px;
+
+  }
+
+
+  .orbit {
+
+    width:
+      225px;
+
+    height:
+      225px;
+
+  }
+
+
+  .window-title h3 {
+
+    font-size:
+      15px;
+
+  }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONE
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) and (
+  orientation: landscape
+) {
+
+  .window-overlay {
+
+    align-items:
+      flex-start;
+
+    padding:
+      8px;
+
+  }
+
+
+  .site-window {
+
+    max-height:
+      calc(100vh - 16px);
+
+    max-height:
+      calc(100dvh - 16px);
+
+  }
+
+
+  .hero {
+
+    padding:
+      45px 0;
+
+  }
+
+
+  section {
+
+    padding:
+      50px 0;
+
+  }
+
+}
+/* =========================================================
+   SIATP ANIMATED MATHEMATICAL BACKGROUND
+   ========================================================= */
+
+.math-background {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep the actual website above the background */
+.navbar,
+main,
+section,
+footer,
+.window-overlay,
+.toast,
+.hero,
+.dashboard,
+.features,
+.about {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------
+   SOFT GLOWING ORBS
+   --------------------------------------------------------- */
+
+.math-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+  opacity: 0.07;
+  animation: orbFloat 18s ease-in-out infinite alternate;
+}
+
+.orb-one {
+  width: 280px;
+  height: 280px;
+  top: 8%;
+  left: -100px;
+  background: radial-gradient(
+    circle,
+    rgba(116, 27, 23, 0.45),
+    transparent 70%
+  );
+}
+
+.orb-two {
+  width: 360px;
+  height: 360px;
+  right: -150px;
+  top: 38%;
+  background: radial-gradient(
+    circle,
+    rgba(139, 55, 21, 0.35),
+    transparent 70%
+  );
+  animation-delay: -6s;
+}
+
+.orb-three {
+  width: 240px;
+  height: 240px;
+  bottom: -80px;
+  left: 35%;
+  background: radial-gradient(
+    circle,
+    rgba(74, 22, 26, 0.3),
+    transparent 70%
+  );
+  animation-delay: -12s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(30px, -25px, 0) scale(1.08);
+  }
+
+  100% {
+    transform: translate3d(-20px, 25px, 0) scale(0.95);
+  }
+}
+
+/* ---------------------------------------------------------
+   FLOATING MATHEMATICAL SYMBOLS
+   --------------------------------------------------------- */
+
+.math-symbol {
+  position: absolute;
+  color: var(--primary);
+  font-family: "Times New Roman", serif;
+  font-weight: 700;
+  opacity: 0.075;
+  user-select: none;
+  white-space: nowrap;
+  animation:
+    mathFloat 14s ease-in-out infinite,
+    mathRotate 20s linear infinite;
+}
+
+/* Individual positions */
+
+.symbol-one {
+  top: 14%;
+  left: 8%;
+  font-size: 52px;
+  animation-duration: 17s, 24s;
+}
+
+.symbol-two {
+  top: 30%;
+  right: 9%;
+  font-size: 42px;
+  animation-duration: 15s, 22s;
+  animation-delay: -4s, -8s;
+}
+
+.symbol-three {
+  top: 62%;
+  left: 6%;
+  font-size: 46px;
+  animation-duration: 18s, 27s;
+  animation-delay: -8s, -12s;
+}
+
+.symbol-four {
+  bottom: 15%;
+  right: 12%;
+  font-size: 50px;
+  animation-duration: 16s, 25s;
+  animation-delay: -5s, -15s;
+}
+
+.symbol-five {
+  top: 74%;
+  left: 30%;
+  font-size: 44px;
+  animation-duration: 19s, 30s;
+  animation-delay: -10s, -20s;
+}
+
+.symbol-six {
+  top: 20%;
+  left: 43%;
+  font-size: 38px;
+  animation-duration: 13s, 21s;
+  animation-delay: -3s, -9s;
+}
+
+.symbol-seven {
+  bottom: 25%;
+  right: 34%;
+  font-family: "DM Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  animation-duration: 20s, 26s;
+  animation-delay: -7s, -14s;
+}
+
+.symbol-eight {
+  top: 48%;
+  left: 19%;
+  font-size: 34px;
+  animation-duration: 15s, 23s;
+  animation-delay: -6s, -11s;
+}
+
+@keyframes mathFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(12px, -18px, 0);
+  }
+
+  50% {
+    transform: translate3d(-8px, -30px, 0);
+  }
+
+  75% {
+    transform: translate3d(-18px, -10px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mathRotate {
+  0% {
+    rotate: 0deg;
+  }
+
+  50% {
+    rotate: 8deg;
+  }
+
+  100% {
+    rotate: 0deg;
+  }
+}
+
+/* ---------------------------------------------------------
+   GEOMETRIC SHAPES
+   --------------------------------------------------------- */
+
+.math-shape {
+  position: absolute;
+  opacity: 0.06;
+  border: 1.5px solid var(--accent);
+  animation: shapeFloat 20s ease-in-out infinite;
+}
+
+/* Circle */
+
+.shape-one {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  top: 22%;
+  left: 25%;
+  animation-delay: -4s;
+}
+
+/* Square */
+
+.shape-two {
+  width: 70px;
+  height: 70px;
+  right: 25%;
+  top: 16%;
+  transform: rotate(25deg);
+  animation-delay: -10s;
+}
+
+/* Diamond */
+
+.shape-three {
+  width: 55px;
+  height: 55px;
+  left: 42%;
+  bottom: 18%;
+  transform: rotate(45deg);
+  animation-delay: -15s;
+}
+
+/* Larger circle */
+
+.shape-four {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  right: 5%;
+  bottom: 8%;
+  animation-delay: -7s;
+}
+
+@keyframes shapeFloat {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(18px, -25px, 0) rotate(20deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* ---------------------------------------------------------
+   SMALL FLOATING PARTICLES
+   --------------------------------------------------------- */
+
+.math-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.math-particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.13;
+  animation: particleFloat 12s ease-in-out infinite;
+}
+
+.math-particles span:nth-child(1) {
+  top: 12%;
+  left: 18%;
+  animation-delay: -2s;
+}
+
+.math-particles span:nth-child(2) {
+  top: 28%;
+  left: 52%;
+  animation-delay: -7s;
+}
+
+.math-particles span:nth-child(3) {
+  top: 43%;
+  left: 78%;
+  animation-delay: -4s;
+}
+
+.math-particles span:nth-child(4) {
+  top: 67%;
+  left: 14%;
+  animation-delay: -9s;
+}
+
+.math-particles span:nth-child(5) {
+  top: 82%;
+  left: 47%;
+  animation-delay: -1s;
+}
+
+.math-particles span:nth-child(6) {
+  top: 58%;
+  left: 91%;
+  animation-delay: -6s;
+}
+
+.math-particles span:nth-child(7) {
+  top: 18%;
+  left: 72%;
+  animation-delay: -11s;
+}
+
+.math-particles span:nth-child(8) {
+  top: 76%;
+  left: 78%;
+  animation-delay: -3s;
+}
+
+.math-particles span:nth-child(9) {
+  top: 36%;
+  left: 34%;
+  animation-delay: -8s;
+}
+
+.math-particles span:nth-child(10) {
+  top: 90%;
+  left: 24%;
+  animation-delay: -5s;
+}
+
+.math-particles span:nth-child(11) {
+  top: 50%;
+  left: 62%;
+  animation-delay: -10s;
+}
+
+.math-particles span:nth-child(12) {
+  top: 8%;
+  left: 90%;
+  animation-delay: -12s;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.05;
+  }
+
+  50% {
+    transform: translate3d(10px, -18px, 0);
+    opacity: 0.16;
+  }
+
+  100% {
+    transform: translate3d(-5px, 5px, 0);
+    opacity: 0.05;
+  }
+}
+
+/* ---------------------------------------------------------
+   MOBILE OPTIMIZATION
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  .math-symbol {
+    opacity: 0.055;
+  }
+
+  .symbol-one {
+    font-size: 38px;
+  }
+
+  .symbol-two {
+    font-size: 32px;
+  }
+
+  .symbol-three {
+    font-size: 34px;
+  }
+
+  .symbol-four {
+    font-size: 38px;
+  }
+
+  .symbol-five {
+    font-size: 32px;
+  }
+
+  .symbol-six {
+    font-size: 30px;
+  }
+
+  .symbol-seven {
+    font-size: 22px;
+  }
+
+  .symbol-eight {
+    font-size: 27px;
+  }
+
+  .math-shape {
+    opacity: 0.04;
+  }
+
+  .math-orb {
+    opacity: 0.045;
+  }
+
+  .math-particles span {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+/* ---------------------------------------------------------
+   VERY SMALL PHONES
+   --------------------------------------------------------- */
+
+@media (max-width: 450px) {
+
+  .symbol-one,
+  .symbol-three,
+  .symbol-five,
+  .shape-one,
+  .shape-three {
+    display: none;
+  }
+
+  .math-symbol {
+    opacity: 0.045;
+  }
+
+  .math-orb {
+    opacity: 0.03;
+  }
+}
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .math-background *,
+  .math-background {
+    animation: none !important;
+  }
 }
